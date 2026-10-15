@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Historia en el Colegio | Luisa de Marillac</title>
+
+    <style>
+        /* =========================
+           COLORES DE LA PÁGINA (Estilo Luisa de Marillac)
+        ========================== */
+        :root {
+            --azul-oscuro: #1d4360;
+            --azul-claro: #2c5c84;
+            --crema: #fffaf3;
+            --amarillo-suave: #ffdf79;
+            --blanco: #ffffff;
+            --texto: #2b3e50;
+            --texto-claro: #f0f4f8;
+        }
+
+        /* =========================
+           CONFIGURACIÓN GENERAL
+        ========================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+            color: var(--texto);
+            background-color: var(--crema);
+            line-height: 1.6;
+        }
+
+        /* =========================
+           MENÚ / NAVEGACIÓN
+        ========================== */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(29, 67, 96, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 223, 121, 0.25);
+        }
+
+        .nav {
+            width: 92%;
+            max-width: 1120px;
+            min-height: 78px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-menu {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            border-radius: 50%;
+            background: white;
+            padding: 2px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 28px;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--texto-claro);
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--amarillo-suave);
+        }
+
+        /* =========================
+           PORTADA PRINCIPAL (Imagen 1)
+        ========================== */
+        .hero {
+            width: 100%;
+            background-color: var(--azul-oscuro);
+            color: var(--texto-claro);
+            text-align: center;
+            padding: 80px 20px 60px;
+            border-bottom: 4px solid var(--amarillo-suave);
+        }
+
+        .hero-logo-grande {
+            width: 90px;
+            height: 90px;
+            object-fit: contain;
+            border-radius: 50%;
+            background: white;
+            padding: 5px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: var(--amarillo-suave);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .hero h3 {
+            font-size: 1.1rem;
+            font-weight: normal;
+            margin-bottom: 25px;
+            color: #d2e3fc;
+        }
+
+        .linea-divisoria {
+            width: 250px;
+            height: 2px;
+            background-color: var(--amarillo-suave);
+            margin: 25px auto;
+        }
+
+        .hero p {
+            max-width: 750px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: #e2ecf8;
+        }
+
+        .hero p span {
+            color: var(--amarillo-suave);
+            font-weight: bold;
+        }
+
+        /* =========================
+           SECCIONES GENERALES
+        ========================== */
+        section {
+            width: 92%;
+            max-width: 1120px;
+            margin: 80px auto;
+        }
+
+        .titulo-seccion {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .titulo-seccion h2 {
+            color: #8c3b22;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            margin-top: 5px;
+        }
+
+        .titulo-seccion p {
+            max-width: 650px;
+            margin: 8px auto;
+            color: #555;
+        }
+
+        /* =========================
+           MOMENTOS / GALERÍA (Imagen 2)
+        ========================== */
+        .grid-momentos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .tarjeta-momento {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            border: 2px solid var(--azul-oscuro);
+            box-shadow: 0 10px 25px rgba(29, 67, 96, 0.08);
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .tarjeta-momento:hover {
+            transform: translateY(-5px);
+        }
+
+        .tarjeta-momento img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+        }
+
+        .tarjeta-momento h3 {
+            color: var(--azul-oscuro);
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+        }
+
+        .tarjeta-momento p {
+            font-size: 0.95rem;
+            color: #444;
+        }
+
+        /* =========================
+           AGRADECIMIENTO PROFESOR (Imagen 3)
+        ========================== */
+        .seccion-profe {
+            background: white;
+            border-radius: 20px;
+            padding: 50px 30px;
+            max-width: 900px;
+            margin: 80px auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid #e1e8ef;
+            text-align: center;
+        }
+
+        .profe-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--azul-oscuro);
+            margin: 0 auto 20px;
+            display: block;
+        }
+
+        .seccion-profe h3 {
+            color: var(--azul-oscuro);
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+
+        .subtitulo-profe {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+        .texto-profe {
+            max-width: 750px;
+            margin: 0 auto;
+            text-align: left;
+            color: #333;
+            font-size: 1.05rem;
+        }
+
+        .texto-profe p {
+            margin-bottom: 15px;
+        }
+
+        .texto-profe blockquote {
+            font-style: italic;
+            color: var(--azul-oscuro);
+            display: inline;
+        }
+
+        /* =========================
+           LÍNEA DE TIEMPO / TABLA (Imagen 4)
+        ========================== */
+        .tabla-contenedor {
+            overflow-x: auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            border: 2px solid var(--azul-oscuro);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th, td {
+            padding: 18px 20px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: var(--azul-oscuro);
+            color: white;
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        td {
+            font-size: 0.95rem;
+            color: #333;
+            text-align: center;
+        }
+
+        tr:hover {
+            background-color: #f8fafc;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* =========================
+           RECUERDO ESPECIAL Y CITA (Imagen 5)
+        ========================== */
+        .recuerdo-seccion {
+            background: white;
+            border-radius: 20px;
+            padding: 50px 30px;
+            max-width: 900px;
+            margin: 80px auto;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid #e1e8ef;
+        }
+
+        .imagen-recuerdo {
+            width: 100%;
+            max-width: 450px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin: 20px auto;
+            border: 3px solid var(--azul-oscuro);
+        }
+
+        .recuerdo-seccion p {
+            max-width: 750px;
+            margin: 15px auto;
+            text-align: left;
+            color: #333;
+        }
+
+        .cita-destacada {
+            margin-top: 35px;
+            padding: 20px;
+            border-left: 5px solid #8c3b22;
+            background: #fff5f5;
+            font-style: italic;
+            font-size: 1.1rem;
+            color: #8c3b22;
+            text-align: center;
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* =========================
+           PIE DE PÁGINA / CIERRE (Imagen 6)
+        ========================== */
+        footer {
+            background-color: var(--azul-oscuro);
+            color: var(--texto-claro);
+            text-align: center;
+            padding: 60px 20px;
+            margin-top: 100px;
+            border-top: 4px solid var(--amarillo-suave);
+        }
+
+        footer h2 {
+            color: var(--amarillo-suave);
+            margin-bottom: 15px;
+            font-size: 2.2rem;
+        }
+
+        footer p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: #d2e3fc;
+        }
+
+        .autor-info {
+            margin-top: 25px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--amarillo-suave);
+        }
+
+        .sub-autor {
+            font-size: 0.95rem;
+            color: #fff;
+            margin-top: 5px;
+        }
+
+        .leyenda-final {
+            font-style: italic;
+            font-size: 0.9rem;
+            color: #a5c1e2;
+            margin-top: 20px;
+        }
+
+        .derechos {
+            margin-top: 40px;
+            font-size: 0.85rem;
+            color: #8bb1dc;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+        }
+
+        /* =========================
+           DISEÑO RESPONSIVO
+        ========================== */
+        @media (max-width: 768px) {
+            nav ul li:not(:last-child) {
+                display: none;
+            }
+            .grid-momentos {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         MENÚ DE NAVEGACIÓN
+    ========================== -->
+    <header>
+        <div class="nav">
+            <img src="images/logo-colegio.jpeg" alt="Logo Colegio" class="logo-menu">
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#momentos">Momentos</a></li>
+                    <li><a href="#profe">Agradecimiento</a></li>
+                    <li><a href="#timeline">Línea de Tiempo</a></li>
+                    <li><a href="#recuerdo">Recuerdo</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- =========================
+         1. PORTADA PRINCIPAL
+    ========================== -->
+    <main id="inicio">
+        <section class="hero" style="width: 100%; margin: 0; padding-top: 60px;">
+            <img src="images/logo-colegio.jpeg" alt="Logo Colegio Luisa de Marillac" class="hero-logo-grande">
+            <h1>Mi Historia en el Complejo Educativo Católico Luisa de Marillac</h1>
+            <h3>Por: Rember Vásquez | Generación 2026</h3>
+            <div class="linea-divisoria"></div>
+            <p>
+                Hoy cierro un capítulo que empezó hace tres años con nervios, cuadernos nuevos y muchos sueños. 
+                Este colegio no solo me enseñó matemáticas o ciencias, me enseñó a crecer, a equivocarme, a levantarme y a valorar cada momento. 
+                Esta página es mi forma de decir <span>gracias</span> por todo lo vivido.
+            </p>
+        </section>
+
+        <!-- =========================
+             2. MOMENTOS QUE NUNCA OLVIDARÉ
+        ========================== -->
+        <section id="momentos">
+            <div class="titulo-seccion">
+                <span style="font-size: 1.5rem;">💛</span>
+                <h2>Momentos que Nunca Olvidaré</h2>
+                <p>Cada uno de estos momentos marcó mi paso por el colegio. Algunos me hicieron reír, otros me hicieron llorar, pero todos me hicieron crecer.</p>
+            </div>
+
+            <div class="grid-momentos">
+                <!-- Momento 1 -->
+                <div class="tarjeta-momento">
+                    <img src="images/primer-dia.jpg" alt="Mi Primer Día">
+                    <h3>Mi Primer Día</h3>
+                    <p>Recuerdo que llegué con mucho miedo, no conocía a nadie. Pero en menos de una semana ya tenía amigos que hoy considero hermanos.</p>
+                </div>
+
+                <!-- Momento 2 -->
+                <div class="tarjeta-momento">
+                    <img src="images/feria-cientifica.jpg" alt="La Feria Científica">
+                    <h3>La Feria Científica</h3>
+                    <p>Mi primer proyecto en equipo. Nos desvelamos, discutimos, reímos... y ganamos el primer lugar. Ese día entendí el valor del trabajo en equipo.</p>
+                </div>
+
+                <!-- Momento 3 -->
+                <div class="tarjeta-momento">
+                    <img src="images/dia-deporte.jpg" alt="El Día del Deporte">
+                    <h3>El Día del Deporte</h3>
+                    <p>Aunque no ganamos, ese día me di cuenta de que lo importante no era el trofeo, sino el equipo que llevábamos en el corazón.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================
+             3. AGRADECIMIENTO AL PROFESOR
+        ========================== -->
+        <section id="profe" style="width: 92%; max-width: 1120px; margin: 80px auto;">
+            <div class="seccion-profe">
+                <div style="font-size: 1.5rem; margin-bottom: 10px;">💛</div>
+                <h3>Gracias, Profe...</h3>
+                <img src="images/profesor.png" alt="Lic. Carlos Ramírez" class="profe-avatar">
+                <h3>Lic. Carlos Ramírez</h3>
+                <div class="subtitulo-profe">Profesor de Ciencias de la Computación</div>
+
+                <div class="texto-profe">
+                    <p>Profe Carlos, usted no solo me enseñó a escribir código, me enseñó que los errores no son fracasos, sino oportunidades para aprender. Recuerdo aquel día en que mi página web no funcionaba y en lugar de darme la respuesta, se sentó conmigo y me dijo: <blockquote>"Busca el error, tú puedes encontrarlo"</blockquote>. En ese momento me sentí capaz de todo.</p>
+                    <p>Gracias por tener paciencia cuando no entendía, por celebrar mis logros como si fueran suyos y por inspirarnos a ser mejores personas cada día.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================
+             4. LÍNEA DE TIEMPO (TABLA)
+        ========================== -->
+        <section id="timeline">
+            <div class="titulo-seccion">
+                <span style="font-size: 1.5rem;">📅</span>
+                <h2>Mi Línea de Tiempo en el Colegio</h2>
+                <p>Cada año trajo consigo experiencias únicas. Aquí un resumen de lo que viví.</p>
+            </div>
+
+            <div class="tabla-contenedor">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Año / Grado</th>
+                            <th>Momento Especial</th>
+                            <th>¿Qué Aprendí?</th>
+                            <th>¿Cómo Me Sentí?</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Primer Año</strong></td>
+                            <td>Mi primer día de clases</td>
+                            <td>Que puedo hacer amigos nuevos</td>
+                            <td>Nerviosa pero emocionada</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Segundo Año</strong></td>
+                            <td>La feria científica</td>
+                            <td>A trabajar en equipo y a investigar</td>
+                            <td>Orgullosa del resultado</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tercer Año</strong></td>
+                            <td>Mi primer proyecto de programación</td>
+                            <td>Que los errores son parte del proceso</td>
+                            <td>Frustrada, luego feliz</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Graduación</strong></td>
+                            <td>La ceremonia de despedida</td>
+                            <td>Que todo esfuerzo tiene su recompensa</td>
+                            <td>Nostálgica y agradecida</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- =========================
+             5. UN RECUERDO QUE ME LLEVO EN EL CORAZÓN
+        ========================== -->
+        <section id="recuerdo">
+            <div class="recuerdo-seccion">
+                <div style="font-size: 1.5rem;">☁️</div>
+                <h2 style="color: #8c3b22;">Un Recuerdo Que Me Llevo en el Corazón</h2>
+                
+                <img src="images/recuerdo-especial.jpg" alt="Recuerdo especial" class="imagen-recuerdo">
+
+                <p>Si tuviera que guardar un solo recuerdo de todo mi tiempo en el colegio, sería el último día de clases. Ese día, cuando sonó el timbre por última vez, todos nos quedamos quietos por unos segundos. Nos miramos, y sin decir nada, entendimos que ya no volveríamos a sentarnos en esas mismas bancas.</p>
+                
+                <p>Ese momento me enseñó que los ciclos se cierran, pero las personas y los recuerdos se quedan. Me llevo las risas en el recreo, las tardes de estudio, los consejos de mis maestros y la amistad de quienes estuvieron conmigo en cada paso. <span style="background-color: #ffdf79; padding: 2px 4px;">Ese recuerdo me acompañará toda la vida.</span></p>
+
+                <div class="cita-destacada">
+                    "No se trata de decir adiós, se trata de decir gracias por todo."
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- =========================
+         6. PIE DE PÁGINA (CIERRE)
+    ========================== -->
+    <footer>
+        <div style="font-size: 1.8rem; margin-bottom: 10px;">🌅</div>
+        <h2>Hasta Siempre, Mi Querida Escuela</h2>
+        <p>Me voy con el corazón lleno de gratitud y los ojos llenos de recuerdos. Llevo conmigo cada enseñanza, cada amistad y cada momento vivido. Luisa de Marillac siempre será mi segunda casa.</p>
+        
+        <div class="linea-divisoria" style="background-color: var(--amarillo-suave); width: 150px;"></div>
+
+        <div class="autor-info">María Fernanda López</div>
+        <div class="sub-autor">Generación 2025</div>
+        <div class="leyenda-final">"Este sitio fue creado como recuerdo de mi paso por el Complejo Educativo Católico Luisa de Marillac"</div>
+
+        <div class="derechos">
+            &copy; 2026 Rember Vásquez - Todos los derechos reservados.<br>
+            Página creada con HTML como proyecto final de Ciencias de la Computación.
+        </div>
+    </footer>
+
+</body>
+</html>
